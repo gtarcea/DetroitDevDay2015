@@ -1,0 +1,119 @@
+Realtime Indexing with Elasticsearch, Go and RethinkDB
+======================================================
+
+ 
+
+Overview
+--------
+
+-   About Me
+
+-   What is the Realtime Web
+
+-   The problem space
+
+-   Other solutions
+
+-   How RethinkDB creates an elegant solution
+
+-   Examples
+
+-   Conclusion
+
+-   Addendum - But I use NodeJS, Python, etc...
+
+ 
+
+About Me
+--------
+
+-   Who I am
+
+ 
+
+What is the Realtime Web
+------------------------
+
+-   details
+
+ 
+
+The problem space
+-----------------
+
+-   problems problems
+
+ 
+
+Other Solutions
+---------------
+
+-   Hibernate Search
+
+-   Polling
+
+-   Message Queues
+
+ 
+
+How RethinkDB creates an elegant solution
+-----------------------------------------
+
+ 
+
+Examples
+--------
+
+ 
+
+Simple Event Listener
+---------------------
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+var change struct {
+    OldValue string `gorethink:"old_val"`
+    NewValue string `gorethink:"new_val"`
+}  
+cursor, _ := r.Table("tablename").Changes().Run(session)
+for cursor.Next(&change) {
+    // Here we have the change event
+    doc := getDoc(change)
+    // Now get related items and build aggregated document
+    // Stick the updated document(s) into the index
+    es.Index().Index("app").Type("user").Id(id).Doc(doc.ID).Do()
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ 
+
+Parallel Event Listener
+-----------------------
+
+This is code here
+
+ 
+
+Bounded Event Listener
+----------------------
+
+This is code here
+
+ 
+
+Conclusions
+-----------
+
+ 
+
+Addendum - But I use Node.js, Python (Java, Ruby, etc…)
+-------------------------------------------------------
+
+ 
+
+Simple Event Listener in Python
+-------------------------------
+
+ 
+
+Simple Event Listener in Node.js
+--------------------------------

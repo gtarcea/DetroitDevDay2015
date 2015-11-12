@@ -1,0 +1,20 @@
+{
+  "name": "DetroitDevDay2015",
+  "version": "1.0.0",
+  "homepage": "https://github.com/gtarcea/DetroitDevDay2015",
+  "authors": [
+    "Glenn Tarcea <glenn.tarcea@gmail.com>"
+  ],
+  "description": "DetroitDevDay2015 Presentation",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reveal.js": "~3.2.0"
+  }
+}
